@@ -1,15 +1,17 @@
 package com.spring;
 
-public class BasketballCoach implements Coach{
-
+public class TrackCoach implements Coach {
+	
 	private FortuneService fortuneService;
 	
-	public BasketballCoach(FortuneService fortuneService){
-		this.fortuneService =fortuneService;
+	public TrackCoach(FortuneService fortuneService) {
+		super();
+		this.fortuneService = fortuneService;
 	}
+
 	@Override
 	public String getDailyWorkout() {
-		return "Spend 30 minutes aiming for the basket";
+		return "run for 5 km";
 	}
 
 	@Override

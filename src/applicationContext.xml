@@ -7,13 +7,40 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+<context:property-placeholder location ="classpath:sport.properties"/>
 	
     <bean id ="baseball"
     	  class = "com.spring.BaseballCoach">
+    	  <constructor-arg ref = "randomFortuneService"/>
     </bean>
     
         <bean id ="basketball"
     	  class = "com.spring.BasketballCoach">
+    	  <constructor-arg ref ="randomFortuneService"/>
+    </bean>
+    
+    <bean id = "cricket"
+          class="com.spring.CricketCoach">
+          <property name ="fortuneService" ref ="fortuneService"></property>
+          <property name ="team" value="${foo.team}"></property>
+          <property name ="emailAddress" value="${foo.email}"></property>
+    </bean>
+    
+    <bean id="myLoggerConfig" class="com.spring.MyLoggerConfig" init-method="initLogger">
+    	<property name="rootLoggingLevel" value="FINE" />
+    	<property name="printedLoggingLevel" value="FINE"/>
+    </bean>
+    
+    <bean id ="track"
+    	class ="com.spring.TrackCoach">
+    	<constructor-arg ref ="randomFortuneService"/>
+    </bean>
+    
+    <bean id ="fortuneService"
+          class ="com.spring.HappyFortuneService">
+    </bean>
+      <bean id ="randomFortuneService"
+          class ="com.spring.RandomFortuneService">
     </bean>
 
 </beans>
